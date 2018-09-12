@@ -60,7 +60,7 @@
 typedef enum IJKLogLevel {
     k_IJK_LOG_UNKNOWN = 0,
     k_IJK_LOG_DEFAULT = 1,
-
+    
     k_IJK_LOG_VERBOSE = 2,
     k_IJK_LOG_DEBUG   = 3,
     k_IJK_LOG_INFO    = 4,
@@ -79,13 +79,14 @@ typedef enum IJKLogLevel {
                    withOptions:(IJKFFOptions *)options;
 
 - (id)initWithMoreContent:(NSURL *)aUrl
-             withOptions:(IJKFFOptions *)options
-              withGLView:(UIView<IJKSDLGLViewProtocol> *)glView;
+              withOptions:(IJKFFOptions *)options
+               withGLView:(UIView<IJKSDLGLViewProtocol> *)glView;
 
 - (id)initWithMoreContentString:(NSString *)aUrlString
-                 withOptions:(IJKFFOptions *)options
-                  withGLView:(UIView<IJKSDLGLViewProtocol> *)glView;
-
+                    withOptions:(IJKFFOptions *)options
+                     withGLView:(UIView<IJKSDLGLViewProtocol> *)glView;
+- (void)startRecordInPath:(NSString *)localPath;
+- (void)stopRecord;
 - (void)prepareToPlay;
 - (void)play;
 - (void)pause;
@@ -93,7 +94,7 @@ typedef enum IJKLogLevel {
 - (BOOL)isPlaying;
 - (int64_t)trafficStatistic;
 - (float)dropFrameRate;
-
+- (UIImage *)snapshot;
 - (void)setPauseInBackground:(BOOL)pause;
 - (BOOL)isVideoToolboxOpen;
 
@@ -103,7 +104,7 @@ typedef enum IJKLogLevel {
 + (void)setLogLevel:(IJKLogLevel)logLevel;
 + (BOOL)checkIfFFmpegVersionMatch:(BOOL)showAlert;
 + (BOOL)checkIfPlayerVersionMatch:(BOOL)showAlert
-                            version:(NSString *)version;
+                          version:(NSString *)version;
 
 @property(nonatomic, readonly) CGFloat fpsInMeta;
 @property(nonatomic, readonly) CGFloat fpsAtOutput;

@@ -66,7 +66,8 @@ typedef NS_ENUM(NSInteger, IJKMPMovieTimeOption) {
 #pragma mark IJKMediaPlayback
 
 @protocol IJKMediaPlayback <NSObject>
-
+- (void)startRecordInPath:(NSString *)localPath;
+- (void)stopRecord;
 - (void)prepareToPlay;
 - (void)play;
 - (void)pause;
@@ -171,7 +172,7 @@ IJK_EXTERN NSString *const IJKMPMoviePlayerSeekVideoStartNotification;
 
 // Must equal to the defination in ijkavformat/ijkavformat.h
 typedef NS_ENUM(NSInteger, IJKMediaEvent) {
-
+    
     // Notify Events
     IJKMediaEvent_WillHttpOpen         = 1,       // attr: url
     IJKMediaEvent_DidHttpOpen          = 2,       // attr: url, error, http_code
